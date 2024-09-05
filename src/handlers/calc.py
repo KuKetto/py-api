@@ -1,24 +1,16 @@
 """Handler for numeric operations"""
 
-import re
 from typing import Union
-from fastapi import HTTPException
-from response_objects.calc_response_objects import SumRes
+from math import radians, cos, sqrt
+from common_lib.input_validation import check_user_input, validate_geometry_side, \
+                                        validate_geometry_angle
+from response_objects.calc_response_objects import SumRes, LawOfCosRes
 
 def sum_handler(items: str) -> Union[SumRes, None]:
     """Sums comma separated numbers together"""
-
-    # check for valid input
-    if re.compile(r'.*[^0-9,.].*$').search(items):
-        raise HTTPException(status_code=400, detail="Invalid input, input has a character " \
-                                                    "other than a number or comma")
+    check_user_input(items, r'^(\d+(\.\d+)?)((,\d+(\.\d+)?)+)?$')
 
     item_list = items.split(',')
-    # check for empty items
-    if '' in item_list:
-        raise HTTPException(status_code=400, detail="Invalid input, a double column is present " \
-                                                    "or the input start / ends with a comma")
-
     if "." in items:
         total_sum = 0.0
         for item in item_list:
@@ -29,3 +21,17 @@ def sum_handler(items: str) -> Union[SumRes, None]:
             total_sum += int(item)
 
     return {"sum": total_sum}
+
+def law_of_cosine_handler(side1: str, side2: str, angle: float) -> Union[LawOfCosRes, None]:
+    """Calculates law of cosine"""
+    check_user_input(side1, r'^\d+(\.\d+)?$')
+    check_user_input(side2, r'^\d+(\.\d+)?$')
+    check_user_input(angle, r'^\d+(\.\d+)?$')
+
+    s1 = validate_geometry_side(side1)
+    s2 = validate_geometry_side(side2)
+    a = validate_geometry_angle(angle)
+    side3 = sqrt(pow(s1, 2) + pow(s2, 2) - 2 * s1 * s2 * cos(radians(a)))
+
+    return {"side3": side3}
+            
