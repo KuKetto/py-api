@@ -21,7 +21,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          pip install coverage ruff
+          pip install coverage ruff coverage-badge
 
       - name: Lint with Ruff
         run: |
