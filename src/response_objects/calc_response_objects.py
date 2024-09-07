@@ -1,11 +1,11 @@
 """Holds response objects of handlers/calc"""
 
-from typing_extensions import TypedDict, Union
+from pydantic import BaseModel
 
-class SumRes(TypedDict):
+class SumRes(BaseModel):
     """Return object of the sum handler function"""
-    sum: Union[int, float]
+    sum: int | float
 
-class LawOfCosRes(TypedDict):
+class LawOfCosRes(BaseModel):
     """Return object of the law of cosine handler function"""
     side3: float
