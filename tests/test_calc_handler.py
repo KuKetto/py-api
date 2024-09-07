@@ -1,4 +1,4 @@
-"""This module tests the calc handler by sending HTTP request"""
+"""This module tests the calc handler by simulating HTTP requests"""
 
 from fastapi.testclient import TestClient
 from src.main import app
