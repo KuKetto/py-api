@@ -4,7 +4,7 @@ from typing import Union
 from math import radians, cos, sqrt
 from common_lib.input_validation import check_user_input, validate_geometry_side, \
                                         validate_geometry_angle
-from response_objects.calc_response_objects import SumRes, LawOfCosRes
+from basemodels.calc_basemodels import SumRes, LawOfCosRes
 
 def sum_handler(items: str) -> Union[SumRes, None]:
     """Sums comma separated numbers together"""
