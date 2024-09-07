@@ -49,3 +49,4 @@ jobs:
           git add coverage.svg
           git commit -m "Update coverage badge"
           git push https://x-access-token:${{ secrets.ACTIONS_TOKEN }}@github.com/KuKetto/py-api.git HEAD:main
+        continue-on-error: true
