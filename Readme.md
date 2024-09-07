@@ -1,5 +1,5 @@
 # FastApi python example
-
+![Coverage](./coverage.svg)
 Setting up a pyenv virtual environment is highly suggested before installing the requirements from requirements.txt
 
 ### Running the app
