@@ -1,4 +1,4 @@
-"""Holds typings of query parameter validation"""
+"""Holds typing for query parameter validation"""
 
 from typing_extensions import TypedDict
 

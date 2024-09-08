@@ -1,4 +1,4 @@
-"""Holds response objects of handlers/item"""
+"""Holds typings for handlers/item"""
 
 from typing import List
 from pydantic import BaseModel

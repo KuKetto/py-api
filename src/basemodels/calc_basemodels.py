@@ -1,4 +1,4 @@
-"""Holds response objects of handlers/calc"""
+"""Holds typings for handlers/calc"""
 
 from pydantic import BaseModel
 
